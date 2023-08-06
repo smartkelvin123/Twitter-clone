@@ -3,20 +3,7 @@ import { View, Text, StyleSheet, Image } from "react-native";
 import { TweetType } from "@/types";
 import { ScrollView } from "react-native-gesture-handler";
 import { Entypo, EvilIcons } from "@expo/vector-icons";
-
-type IconButtonProps = {
-  icon: React.ComponentProps<typeof EvilIcons>["name"];
-  text?: string | number;
-};
-
-const IconButton = ({ icon, text }: IconButtonProps) => {
-  return (
-    <View style={{ flexDirection: "row", alignItems: "center" }}>
-      <EvilIcons name={icon} size={16} color="gray" />
-      <Text style={{ marginLeft: 12, color: "grey" }}>{text}</Text>
-    </View>
-  );
-};
+import IconButton from "./Iconbutton";
 
 type TweetProps = {
   tweet: TweetType;
@@ -26,7 +13,7 @@ const Tweet = ({ tweet }: TweetProps) => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Image source={tweet.user.image} style={styles.userImage} />
+        <Image src={tweet.user.image} style={styles.userImage} />
         <View style={styles.mainContainer}>
           <View>
             <Text style={styles.name}>{tweet.user.name}</Text>
@@ -40,7 +27,7 @@ const Tweet = ({ tweet }: TweetProps) => {
           </View>
 
           <Text style={styles.content}>{tweet.content}</Text>
-          {tweet.image && <Image source={tweet.image} style={styles.image} />}
+          {tweet.image && <Image src={tweet.image} style={styles.image} />}
           <View style={styles.footer}>
             <IconButton icon="comment" text={tweet.numberOfComments} />
             <IconButton icon="retweet" text={tweet.numberOfRetweets} />
