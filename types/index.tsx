@@ -1,16 +1,18 @@
-export type TweetProps = {
-  tweet: {
-    user: {
-      name: string;
-      image?: string;
-      username: string;
-      verified?: boolean | null;
-      numberOfComment?: number;
-      nuberOfRetweet?: number;
-      numberOfLikes?: number;
-      id: string;
-      impression?: 500;
-    };
-    content: string;
-  };
+export type User = {
+  id: string;
+  name: string;
+  username: string;
+  image?: string;
+};
+
+export type TweetType = {
+  id: string;
+  content: string;
+  user: User;
+  createdAt: string;
+  image?: string;
+  numberOfComments?: number;
+  numberOfRetweets?: number;
+  numberOfLikes?: number;
+  impressions?: number;
 };
