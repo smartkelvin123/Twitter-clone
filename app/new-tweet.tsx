@@ -19,48 +19,25 @@ const user = {
 };
 
 export default function NewTweet() {
-  const [text, setText] = useState("");
-
+  const [text, setText] = useState('');
   const router = useRouter();
 
-  const OnTweetPress = () => {
-    console.warn("posting the tweet:", text);
+  const onTweetPress = () => {
+    console.warn('Positng the tweet: ', text);
+
+    setText('');
+    router.back();
   };
 
-  // const { createTweet } = useTweetsApi();
-
-  // const queryClient = useQueryClient();
-
-  // const { mutateAsync, isLoading, isError, error } = useMutation({
-  //   mutationFn: createTweet,
-  //   onSuccess: (data) => {
-  // queryClient.invalidateQueries({ queryKey: ['tweets'] })
-  //     queryClient.setQueriesData(['tweets'], (existingTweets) => {
-  //       return [data, ...existingTweets];
-  //     });
-  //   },
-  // });
-
-  // const onTweetPress = async () => {
-  //   try {
-  //     await mutateAsync({ content: text });
-
-  //     setText('');
-  //     router.back();
-  //   } catch (e) {
-  //     console.log('Error:', e.message);
-  //   }
-  // };
-
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={styles.container}>
         <View style={styles.buttonContainer}>
           <Link href="../" style={{ fontSize: 18 }}>
             Cancel
           </Link>
-          {/* {isLoading && <ActivityIndicator />} */}
-          <Pressable onPress={OnTweetPress} style={styles.button}>
+
+          <Pressable onPress={onTweetPress} style={styles.button}>
             <Text style={styles.buttonText}>Tweet</Text>
           </Pressable>
         </View>
@@ -69,13 +46,12 @@ export default function NewTweet() {
           <Image src={user.image} style={styles.image} />
           <TextInput
             value={text}
-            placeholder="What's happening?"
             onChangeText={setText}
+            placeholder="What's happening?"
             multiline
-            numberOfLines={7}
+            numberOfLines={5}
             style={{ flex: 1 }}
           />
-          <Text>New Tweet</Text>
         </View>
       </View>
     </SafeAreaView>
