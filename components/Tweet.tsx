@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { TweetType } from "@/types";
 import { ScrollView } from "react-native-gesture-handler";
-import { Entypo, EvilIcons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import IconButton from "./IconButton";
 import { Link } from "expo-router";
 
@@ -15,7 +15,7 @@ const Tweet = ({ tweet }: TweetProps) => {
     <ScrollView>
       <Link href={`/feed/tweet/${tweet.id}`} asChild>
         <Pressable style={styles.container}>
-          <Image source={tweet.user.image} style={styles.userImage} />
+          <Image src={tweet.user.image} style={styles.userImage} />
           <View style={styles.mainContainer}>
             <View>
               <Text style={styles.name}>{tweet.user.name}</Text>
@@ -29,7 +29,7 @@ const Tweet = ({ tweet }: TweetProps) => {
             </View>
 
             <Text style={styles.content}>{tweet.content}</Text>
-            {tweet.image && <Image source={tweet.image} style={styles.image} />}
+            {tweet.image && <Image src={tweet.image} style={styles.image} />}
             <View style={styles.footer}>
               <IconButton icon="comment" text={tweet.numberOfComments} />
               <IconButton icon="retweet" text={tweet.numberOfRetweets} />
